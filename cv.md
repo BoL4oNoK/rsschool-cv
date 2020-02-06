@@ -15,7 +15,7 @@ VK | [@bol4onok](https://vk.com/bol4onok)
 
 **Skills**
 * PHP
-* JS
+* JS/JQuery
 * SQL
 
 **Code examples**
