@@ -52,6 +52,27 @@
 		<p><b>English</b> only at work.</p>
 		<div class="codes">
 			<b>Code examples</b>
+						<pre>
+				<code>/*
+* Function for repost new messages from group wall to conversation
+* It will work only in case, if message posted under Group name
+*/
+function repost_message () {
+	// receive and decode JSON-data from VK API
+	$data = json_decode(file_get_contents('php://input'));
+	$obj = $data->object;
+	$user_id = $obj->from_id; // Post author ID
+	$post_id = $obj->id; // Message ID
+	$owner_id = $obj->owner_id; // Group ID (owner)
+
+	if ($owner_id === $user_id) {
+		$VK->sendMessage(VK_DIALOG, 0, 'О, новый постик подъехал!', "wall{$owner_id}_{$post_id}");
+	}
+
+	echo 'ok';  // Print "OK" as confirmation, that function receive data from VK.API
+}
+				</code>
+			</pre>
 		</div>
 	</main>
   </body>
